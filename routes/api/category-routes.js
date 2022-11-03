@@ -9,16 +9,16 @@ router.get('/', async (req, res) => {
     res.json(err);
   });
   // be sure to include its associated Products
-  res.json(allCategories);
+  res.json(allCategories, Product);
 });
 
 router.get('/:id', async (req, res) => {
   // find one category by its `id` value
-  const catId = await Category.find().catch((err) => {
+  const catId = await Category.find(id).catch((err) => {
     res.json(err);
   });
   // be sure to include its associated Products
-  res.json(catId);
+  res.json(catId, Product);
 });
 
 router.post('/', async (req, res) => {
