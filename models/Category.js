@@ -1,13 +1,24 @@
-const { Model, DataTypes } = require('sequelize');
+const { Model, DataTypes, INTEGER } = require('sequelize');
 
 const sequelize = require('../config/connection.js');
 
+//new sequelize model for category
+//define primary key
 class Category extends Model {}
 
-Category.init(
-  {
+Category.hasMany({
     // define columns
-  },
+    id: {
+      type: DataTypes.INTEGER,
+      primaryKey: true,
+      autoIncrement: true,
+      allowNull: false
+    },
+    category_name: {
+      type: DataTypes.STRING,
+      allowNull: false
+    }
+  }, 
   {
     sequelize,
     timestamps: false,
@@ -18,3 +29,6 @@ Category.init(
 );
 
 module.exports = Category;
+
+//category.hasmany(product);
+//product.belongsTo(category);
