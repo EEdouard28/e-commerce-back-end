@@ -6,7 +6,7 @@ const sequelize = require('../config/connection.js');
 //define primary key
 class Category extends Model {}
 
-Category.hasMany({
+Category.init({
     // define columns
     id: {
       type: DataTypes.INTEGER,
@@ -24,7 +24,7 @@ Category.hasMany({
     timestamps: false,
     freezeTableName: true,
     underscored: true,
-    modelName: 'category',
+    modelName: 'category', //ability to create foreign key on different table
   }
 );
 

@@ -3,7 +3,7 @@ const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../config/connection');
 
 class ProductTag extends Model {}
-
+//Use to map many to many relationships where each unique combo of product and tag ids is assigned primary key
 ProductTag.init(
   {
     // define columns
@@ -13,6 +13,7 @@ ProductTag.init(
       primaryKey: true,
       autoIncrement: true,
     },
+    //foreign key
     product_id: {
       type: DataTypes.INTEGER,
       references: {
@@ -20,6 +21,7 @@ ProductTag.init(
         key: "id"
         }
     },
+    //foreign key
     tag_id: {
       type: DataTypes.INTEGER,
       references: {
