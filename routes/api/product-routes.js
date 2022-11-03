@@ -6,32 +6,36 @@ const { Product, Category, Tag, ProductTag } = require("../../models");
 // get all products
 router.get("/", async (req, res) => {
   // find all products
-  const allProducts = await Product.findAll().catch((err) => {
-    res.json(err);
-  });
-  // be sure to include its associated Category and Tag data
-  res.json(allProducts, Category, Tag);
+  try { 
+    const allProducts = await Product.findAll({
+      //through table
+      include: [Category,{model:Tag, through:ProductTag}]
+    })
+    res.json(allProducts);
+  } catch(err) {res.json(err)}
 });
 
 // get one product
 router.get("/:id", async (req, res) => {
   // find a single product by its `id`
-  const prodId = await Product.findByPk(req.params.id).catch((err) => {
-    res.json(err);
-  });
-  // be sure to include its associated Category and Tag data
-  res.json(prodId, Category, Tag);
+  try { 
+    const getProduct = await Product.findByPk({
+      //through table
+      include: [Category,{model:Tag, through:ProductTag}]
+    })
+    res.json(getProduct);
+  } catch(err) {res.json(err)}
 });
 
 // create new product
 router.post("/", async (req, res) => {
-  try {
-    const addProduct = await Product.create(req.body);
-    res.status(200).json(addProduct); //...????
-  } catch (err) {
-    res.status(400), json(err);
-  }
-});
+//   try {
+//     const addProduct = await Product.create(req.body);
+//     res.status(200).json(addProduct); //...????
+//   } catch (err) {
+//     res.status(400), json(err);
+//   }
+// });
 /* req.body should look like this...
     {
       product_name: "Basketball",
@@ -60,7 +64,7 @@ Product.create(req.body)
     console.log(err);
     res.status(400).json(err);
   });
-
+})
 // update product
 router.put("/:id", (req, res) => {
   // update product data
