@@ -16,17 +16,20 @@ router.get("/", async (req, res) => {
 
 router.get("/:id", async (req, res) => {
   // find one category by its `id` value
-  try { 
-    const catId = await Category.findByPk({
-      include: [Product]
-    })
+  try {  
+    const catId = await Category.findOne({
+      where: {
+        id: req.params.id
+      },
+         include: [Product]
+  });
     res.json(catId);
   } catch(err) {res.json(err)}
 });
   // be sure to include its associated Products
- 
 
 
+  
 router.post("/", async (req, res) => {
   // create a new category
   try {

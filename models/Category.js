@@ -30,5 +30,3 @@ Category.init({
 
 module.exports = Category;
 
-//category.hasmany(product);
-//product.belongsTo(category);
