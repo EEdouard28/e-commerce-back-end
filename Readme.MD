@@ -40,4 +40,4 @@ Our application is a back end for an e-commerce companies. This applicated is po
 
   ## Tests
 
-  Video Link:
+  Video Link: https://www.youtube.com/watch?v=KBiGK8gIsG8&feature=youtu.be
