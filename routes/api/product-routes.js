@@ -29,13 +29,13 @@ router.get("/:id", async (req, res) => {
 
 // create new product
 router.post("/", async (req, res) => {
-//   try {
-//     const addProduct = await Product.create(req.body);
-//     res.status(200).json(addProduct); //...????
-//   } catch (err) {
-//     res.status(400), json(err);
-//   }
-// });
+  try {
+    const addProduct = await Product.create(req.body);
+    res.status(200).json(addProduct);
+  } catch (err) {
+    res.status(400).json(err);
+  }
+});
 /* req.body should look like this...
     {
       product_name: "Basketball",
@@ -64,7 +64,6 @@ Product.create(req.body)
     console.log(err);
     res.status(400).json(err);
   });
-})
 // update product
 router.put("/:id", (req, res) => {
   // update product data
@@ -109,6 +108,13 @@ router.put("/:id", (req, res) => {
 
 router.delete("/:id", async (req, res) => {
   // delete one product by its `id` value
+  try {
+    const deleteProdId = await Product.destroy({where:{id: req.params.id}});
+    res.status(200).json(deleteProdId);
+  } catch (err) {
+    res.status(400).json(err);
+  }
 });
+
 
 module.exports = router;
