@@ -30,8 +30,8 @@ router.get("/:id", async (req, res) => {
 });
 
 // create new product
-router.post('/', (req, res) => {
-
+router.post('/', async (req, res) => {
+try { 
   Product.create({
     product_name: req.body.product_name,
     price: req.body.price,
@@ -41,9 +41,9 @@ router.post('/', (req, res) => {
   .then((newProduct) => {
     res.json(newProduct);
   })
-  .catch((err) => {
+  } catch (err) {
     res.json(err);
-  });
+  }
 });
 
 router.post("/", async (req, res) => {
