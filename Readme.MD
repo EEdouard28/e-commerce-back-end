@@ -19,6 +19,7 @@ Our application is a back end for an e-commerce companies. This applicated is po
   This application requires Node.js, Express.js, mysql2, and sequelize packages. Please run your npm installation in order to view the MySQL database.
 
   ## Screenshot
+<img width="2560" alt="Screen Shot 2022-11-04 at 5 27 12 PM" src="https://user-images.githubusercontent.com/111817163/200077672-ec50d8d4-5cb3-4695-ab60-72c755e099e2.png">
 
   ## Usage
 
